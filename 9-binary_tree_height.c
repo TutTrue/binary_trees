@@ -1,27 +1,50 @@
 #include "binary_trees.h"
-
-size_t get_height(binary_tree_t *tree, size_t *counter);
+#include <stdio.h>
+size_t get_height_l(binary_tree_t *tree, size_t *counter);
+size_t get_height_r(binary_tree_t *tree, size_t *counter);
+size_t higher(size_t ll, size_t lr, size_t rl, size_t rr);
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	size_t left_height = 0, right_height = 0;
+	size_t ll = 0, lr = 0, rl = 0, rr = 0;
 
 	if (tree == NULL)
 		return (0);
-	left_height = get_height(tree->left, &left_height);
-	right_height = get_height(tree->right, &right_height);
+	ll = get_height_l(tree->left, &ll);
+	lr = get_height_r(tree->left, &lr);
+	rl = get_height_l(tree->right, &rl);
+	rr = get_height_r(tree->right, &rr);
 
-	if (left_height > right_height)
-		return left_height;
-
-	return right_height;
+	return higher(ll, lr, rl, rr);
 }
 
-size_t get_height(binary_tree_t *tree, size_t *counter)
+size_t get_height_l(binary_tree_t *tree, size_t *counter)
 {
 	if (!tree)
 		return 0;
+
+	get_height_l(tree->left, counter);
 	(*counter)++;
-	get_height(tree->left, counter);
-	get_height(tree->right, counter);
 	return (*counter);
+}
+
+size_t get_height_r(binary_tree_t *tree, size_t *counter)
+{
+	if (!tree)
+		return 0;
+
+	get_height_r(tree->right, counter);
+	(*counter)++;
+	return (*counter);
+}
+
+size_t higher(size_t ll, size_t lr, size_t rl, size_t rr)
+{
+	if (ll >= lr && ll >= rl && ll >= rr)
+		return (ll);
+	else if (lr >= ll && lr >= rl && lr >= rr)
+		return (lr);
+	else if (rl >= ll && rl >= lr && rl >= rr)
+		return (rl);
+
+	return (rr);
 }
