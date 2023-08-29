@@ -9,6 +9,7 @@ void traverse(const binary_tree_t *tree, size_t *counter);
 size_t binary_tree_nodes(const binary_tree_t *tree)
 {
 	size_t counter = 0;
+
 	traverse(tree, &counter);
 	return (counter);
 }
