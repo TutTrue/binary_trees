@@ -3,7 +3,8 @@
 /*prototypes*/
 size_t get_size(binary_tree_t *tree, size_t *counter);
 size_t binary_tree_size(const binary_tree_t *tree);
-void binary_tree_to_array(const binary_tree_t *tree, size_t *tree_size, int *tree_arr);
+void binary_tree_to_array(const binary_tree_t *tree, size_t *tree_size,
+						  int *tree_arr);
 /**
  * binary_tree_is_bst - checks if a binary tree is a valid Binary Search Tree
  * @tree: root node
@@ -14,6 +15,8 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 	int *tree_arr;
 	size_t tree_size, tmp_size, i;
 
+	if (tree == NULL)
+		return (0);
 	tree_size = binary_tree_size(tree);
 	tmp_size = tree_size - 1;
 	tree_arr = malloc(sizeof(int) * tree_size);
@@ -34,16 +37,18 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 /**
  * binary_tree_inorder - goes through a binary tree using in-order traversal
  * @tree: tree pointer
- * @func: function pointer
+ * @tree_size: tree size pointer
+ * @tree_arr: tree_arr pointer
  */
-void binary_tree_to_array(const binary_tree_t *tree, size_t *tree_size, int *tree_arr)
+void binary_tree_to_array(const binary_tree_t *tree, size_t *tree_size,
+						  int *tree_arr)
 {
 	if (tree == NULL)
 		return;
 
 	binary_tree_to_array(tree->left, tree_size, tree_arr);
 	tree_arr[*tree_size] = tree->n;
-	*tree_size = *(tree_size)-1;
+	*tree_size = *(tree_size) - 1;
 
 	binary_tree_to_array(tree->right, tree_size, tree_arr);
 }
