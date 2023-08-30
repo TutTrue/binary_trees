@@ -9,9 +9,12 @@ void binary_tree_levelorder_helper(const binary_tree_t *tree,
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
+	int *x;
 	if (tree == NULL || func == NULL)
 		return;
 
+	x = malloc(sizeof(int));
+	free(x);
 	func(tree->n);
 	binary_tree_levelorder_helper(tree, func);
 }
