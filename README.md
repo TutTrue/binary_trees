@@ -49,19 +49,19 @@
 | 23. Rotate right | [104-binary_tree_rotate_right.c](./104-binary_tree_rotate_right.c) |
 | 24. Is BST | [110-binary_tree_is_bst.c](./110-binary_tree_is_bst.c) |
 | 25. BST - Insert | [111-bst_insert.c](./111-bst_insert.c) [0-binary_tree_node.c](./0-binary_tree_node.c) |
-| 26. BST - Array to BST | [SOON](./) |
-| 27. BST - Search | [SOON](./) |
-| 28. BST - Remove | [SOON](./) |
-| 29. Big O #BST | [SOON](./) |
-| 30. Is AVL | [SOON](./) |
-| 31. AVL - Insert | [SOON](./) |
-| 32. AVL - Array to AVL | [SOON](./) |
-| 33. AVL - Remove | [SOON](./) |
-| 34. AVL - From sorted array | [SOON](./) |
-| 35. Big O #AVL Tree | [SOON](./) |
-| 36. Is Binary heap | [SOON](./) |
-| 37. Heap - Insert | [SOON](./) |
-| 38. Heap - Array to Binary Heap | [SOON](./) |
-| 39. Heap - Extract | [SOON](./) |
-| 40. Heap - Sort | [SOON](./) |
-| 41. Big O #Binary Heap | [SOON](./) |
+| 26. BST - Array to BST | [112-array_to_bst.c](./112-array_to_bst.c), [111-bst_insert.c](./111-bst_insert.c), [0-binary_tree_node.c](./0-binary_tree_node.c) |
+| 27. BST - Search | [113-bst_search.c](./113-bst_search.c) |
+| 28. BST - Remove | [114-bst_remove.c](./114-bst_remove.c) |
+| 29. Big O #BST | [115-O](./115-O) |
+| 30. Is AVL | [120-binary_tree_is_avl.c](./120-binary_tree_is_avl.c) |
+| 31. AVL - Insert | [121-avl_insert.c](./121-avl_insert.c), [14-binary_tree_balance.c](./14-binary_tree_balance.c), [103-binary_tree_rotate_left.c](./103-binary_tree_rotate_left.c), [104-binary_tree_rotate_right.c](./104-binary_tree_rotate_right.c), [0-binary_tree_node.c](./0-binary_tree_node.c) |
+| 32. AVL - Array to AVL | [122-array_to_avl.c](./122-array_to_avl.c), [121-avl_insert.c](./121-avl_insert.c), [0-binary_tree_node.c](./0-binary_tree_node.c), [103-binary_tree_rotate_left.c](./103-binary_tree_rotate_left.c), [104-binary_tree_rotate_right.c](./104-binary_tree_rotate_right.c), [14-binary_tree_balance.c](./14-binary_tree_balance.c) |
+| 33. AVL - Remove | [123-avl_remove.c](./123-avl_remove.c), [14-binary_tree_balance.c](./14-binary_tree_balance.c), [103-binary_tree_rotate_left.c](./103-binary_tree_rotate_left.c), [104-binary_tree_rotate_right.c](./104-binary_tree_rotate_right.c) |
+| 34. AVL - From sorted array | [124-sorted_array_to_avl.c](./124-sorted_array_to_avl.c), [0-binary_tree_node.c](./0-binary_tree_node.c) |
+| 35. Big O #AVL Tree | [125-O](./125-O) |
+| 36. Is Binary heap | [130-binary_tree_is_heap.c](./130-binary_tree_is_heap.c) |
+| 37. Heap - Insert | [131-heap_insert.c](./131-heap_insert.c), [0-binary_tree_node.c](./0-binary_tree_node.c) |
+| 38. Heap - Array to Binary Heap | [132-array_to_heap.c](./132-array_to_heap.c), [131-heap_insert.c](./131-heap_insert.c), [0-binary_tree_node.c](./0-binary_tree_node.c) |
+| 39. Heap - Extract | [133-heap_extract.c](./133-heap_extract.c) |
+| 40. Heap - Sort | [134-heap_to_sorted_array.c](./134-heap_to_sorted_array.c), [133-heap_extract.c](./133-heap_extract.c) |
+| 41. Big O #Binary Heap | [135-O](./135-O) |
