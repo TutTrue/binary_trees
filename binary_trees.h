@@ -24,6 +24,31 @@ typedef struct binary_tree_s bst_t;
 typedef struct binary_tree_s avl_t;
 typedef struct binary_tree_s heap_t;
 
+/**
+ * struct QueueNode - Structure for a node in the queue
+ * @treeNode: Pointer to a binary tree node
+ * @next: Pointer to the next node in the queue
+ *
+ * Description: Structure representing a node in the queue
+ */
+struct QueueNode
+{
+	binary_tree_t *treeNode;
+	struct QueueNode *next;
+};
+
+/**
+ * struct Queue_t - Structure for a queue
+ * @front: Pointer to the front of the queue
+ * @rear: Pointer to the rear of the queue
+ *
+ * Description: Structure representing a queue
+ */
+typedef struct Queue_t
+{
+	struct QueueNode *front;
+	struct QueueNode *rear;
+} Queue_t;
 /*-------Functions-----------*/
 void binary_tree_print(const binary_tree_t *);
 
@@ -60,6 +85,7 @@ bst_t *bst_insert(bst_t **tree, int value);
 bst_t *array_to_bst(int *array, size_t size);
 bst_t *bst_search(const bst_t *tree, int value);
 bst_t *bst_remove(bst_t *root, int value);
+int binary_tree_is_avl(const binary_tree_t *tree);
 /*-------End Functions-----------*/
 
 #endif /*BINARY_TREE_H*/
