@@ -52,7 +52,7 @@ bst_t *bst_remove(bst_t *root, int value)
 		}
 		else
 		{
-			min = FindMin(root->right);
+			min = find_min(root->right);
 			root->n = min->n;
 			root->right = bst_remove(root->right, min->n);
 		}
