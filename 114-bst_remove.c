@@ -2,7 +2,6 @@
 #include <stdio.h>
 bst_t *FindMin(bst_t *root);
 void swapNodes(bst_t *root, bst_t *min);
-//void swapNodesn(bst_t *root, bst_t *min);
 
 bst_t *bst_remove(bst_t *root, int value)
 {
@@ -39,92 +38,14 @@ bst_t *bst_remove(bst_t *root, int value)
 		else
 		{
 
-			 /*printf("%d\n", min_node_r->n);
-			 printf("%d\n", root->n);
-			 tmp = min_node_r->parent;
-			 tmp->left = NULL;
-			 root->right->parent = min_node_r;
-			 min_node_r->parent = root->parent;
-			 min_node_r->left = root->left;
-			 min_node_r->right = root->right;
-			 root = min_node_r;*/
-
+			 
 			min = FindMin(root->right);
 
-			/*tmp = min_node_r->parent;
-			min_node_r->parent = root->parent;
-			root->parent = tmp;
-			tmp->left = root;
-			tmp = min_node_r->right;
-			tmp->parent = min_node_r;
-			min_node_r->right = root->right;
-			root->right = tmp;
-			min_node_r->left = root->left;
-			root->left= NULL;*/
-			/*tmp = min->parent;
-			tmp->parent = min;
-			min->parent = root->parent;
-			root->parent = tmp;
-			tmp = root->right;
-			root->right = min->right;
-			min->right = tmp;
-			tmp->parent = min;
-			tmp = root->left;
-			root->left =min->left;
-			min->left = tmp;
-			if (tmp)
-				tmp->parent = min;*/
-			/*printf("%d\n", root->n);
-			printf("%d\n", root->parent->n);
-			printf("%d\n", root->parent->parent->n);
-			//printf("%d\n", root->parent->parent->parent->n);
-			printf("%d\n", min->right->parent->n);
-			printf("-----------------------\n");
-			printf("%d\n", min->left->n);
-			printf("%d\n", min->left->parent->n);
-			printf("-----------------------\n");
-			printf("%p\n", (void *)min->parent);
-			printf("-----------------------\n");
-			printf("%d\n", min->right->left->n);
-			printf("%d\n", min->right->left->parent->n);
-			printf("%p\n", (void *)min->right->left->left);
-			printf("%p\n", (void *)min->right->left->right);
-			printf("-----------------------\n");
-			printf("-----------------------\n");
-			//printf("%d\n", min->left->parent->n);
-			binary_tree_print(min);
-			printf("-----------------------\n");
-			printf("-----------------------\n");
-			printf("%d\n", min->right->left->n);
-			printf("%p\n", (void *)min->right->left->left);
-			printf("%p\n", (void *)min->right->left->right);
-			printf("%d\n", min->right->left->parent->n);
-			printf("-----------------------\n");
-			printf("%d\n", min->n);
-			printf("%d\n", min->left->n);
-			printf("%d\n", min->right->n);
-			printf("%p\n", (void *)min->parent);
-			printf("-----------------------\n");
-			printf("%d\n", min->right->n);
-			printf("%d\n", min->right->left->n);
-			printf("%d\n", min->right->right->n);
-			printf("%d\n", min->right->parent->n);
-			printf("%p\n", (void *)min->right->parent);
-			printf("-----------------------\n");
-			printf("%d\n", min->left->n);
-			printf("%d\n", min->left->left->n);
-			printf("%d\n", min->left->right->n);
-			printf("%d\n", min->left->parent->n);
-			printf("%p\n", (void *)min->left->parent);
-			printf("-----------------------\n");
-			printf("%d\n", root->n);
-			printf("-----------------------\n");*/
 			swapNodes(root, min);
 			root->parent->left = NULL;
 			free(root);
 			root = min;
 
-			//return (bst_remove(min, root->n));
 		}
 	}
 	return (root);
