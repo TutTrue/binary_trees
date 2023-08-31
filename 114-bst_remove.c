@@ -3,7 +3,7 @@
 bst_t *FindMin(bst_t *root);
 void swapNodes(bst_t *root, bst_t *min);
 
-bst_t *bst_remove(bst_t *root, int value)
+/*bst_t *bst_remove(bst_t *root, int value)
 {
 	bst_t *rm_node, *min;
 	if (root == NULL)
@@ -42,7 +42,7 @@ else if (root->right == NULL)
     if (root != NULL)
         root->parent = rm_node->parent;
     free(rm_node);
-}
+}*/
 		/*else if (root->left == NULL)
 		{
 			rm_node = root;
@@ -59,7 +59,7 @@ else if (root->right == NULL)
 			root->parent->right = root;
 			free(rm_node);
 		}*/
-		else
+		/*else
 		{
 
 			 
@@ -73,8 +73,59 @@ else if (root->right == NULL)
 		}
 	}
 	return (root);
-}
+}*/
+bst_t *bst_remove(bst_t *root, int value)
+{
+	bst_t *min, *temp;
+    if (root == NULL)
+        return root;
 
+    if (value < root->n)
+        root->left = bst_remove(root->left, value);
+    else if (value > root->n)
+        root->right = bst_remove(root->right, value);
+    else
+    {
+        if (root->left == NULL)
+        {
+            temp = root->right;
+            if (root->parent != NULL)
+            {
+                if (root->parent->left == root)
+                    root->parent->left = temp;
+                else
+                    root->parent->right = temp;
+                if (temp != NULL)
+                    temp->parent = root->parent;
+            }
+            free(root);
+            return temp;
+        }
+        else if (root->right == NULL)
+        {
+            temp = root->left;
+            if (root->parent != NULL)
+            {
+                if (root->parent->left == root)
+                    root->parent->left = temp;
+                else
+                    root->parent->right = temp;
+                if (temp != NULL)
+                    temp->parent = root->parent;
+            }
+            free(root);
+            return temp;
+        }
+        else
+        {
+            min = FindMin(root->right);
+            root->n = min->n;
+            root->right = bst_remove(root->right, min->n);
+        }
+    }
+
+    return root;
+}
 /**
  * FindMin - find minimum in a tree.
  * @tree: the root of the tree
