@@ -1,6 +1,6 @@
 #include "binary_trees.h"
 #include <stdio.h>
-bst_t *FindMin(bst_t *root);
+bst_t *find_min(bst_t *root);
 /**
  * bst_remove - remove a node from a BST
  * @root: root of the tree
@@ -60,57 +60,13 @@ bst_t *bst_remove(bst_t *root, int value)
 	return (root);
 }
 /**
- * FindMin - find minimum in a tree.
- * @tree: the root of the tree
- * @value: value
- * Return: pointer to a node that has the value
+ * find_min - find minimum in a tree.
+ * @root: the root of the tree
+ * Return: pointer to a node that has the min value
  */
-bst_t *FindMin(bst_t *root)
+bst_t *find_min(bst_t *root)
 {
 	while (root->left != NULL)
 		root = root->left;
-	return root;
+	return (root);
 }
-
-/*void swapNodes(bst_t *root, bst_t *min)
-{
-	bst_t *tempParent, *tempLeft, *tempRight;
-
-	if (root->parent != NULL)
-	{
-		if (root->parent->left == root)
-			root->parent->left = min;
-		else
-			root->parent->right = min;
-        }
-	
-	if (min->parent != NULL)
-	{
-		if (min->parent->left == min)
-			min->parent->left = root;
-		else
-			min->parent->right = root;
-        }
-
-	tempParent = root->parent;
-	root->parent = min->parent;
-	min->parent = tempParent;
-
-	tempLeft = root->left;
-	root->left = min->left;
-	min->left = tempLeft;
-
-	tempRight = root->right;
-	root->right = min->right;
-	min->right = tempRight;
-
-	min->right->parent = min;
-	min->left->parent = min;
-}
-void swapNodesn(bst_t *root, bst_t *min)
-{
-    int temp = root->n;
-
-    root->n = min->n;
-    min->n = temp;
-}*/
