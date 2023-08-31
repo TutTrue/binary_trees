@@ -15,19 +15,6 @@ int binary_tree_is_bst(const binary_tree_t *tree);
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
-	if (tree == NULL)
-		return (0);
-	return (binary_tree_is_bst(tree) &&
-			binary_tree_is_avl_helper(tree));
-}
-
-/**
- * binary_tree_is_bst - checks if a binary tree is a valid Binary Search Tree
- * @tree: root node
- * Return: 1 if tree is a valid BST, and 0 otherwise
- */
-int binary_tree_is_bst(const binary_tree_t *tree)
-{
 	int *tree_arr;
 	size_t tree_size, tmp_size, i;
 
@@ -47,8 +34,9 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 		}
 	}
 	free(tree_arr);
-	return (1);
+	return (binary_tree_is_avl_helper(tree));
 }
+
 /**
  * binary_tree_is_avl_helper - checks if a binary tree is a valid AVL Tree
  * @tree: pointer to tree node
