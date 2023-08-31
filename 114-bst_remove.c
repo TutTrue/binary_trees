@@ -1,8 +1,8 @@
 #include "binary_trees.h"
 #include <stdio.h>
 bst_t *FindMin(bst_t *root);
-/*void swapNodes(bst_t *A, bst_t *B);*/
-void swapNodesn(bst_t *A, bst_t *B);
+void swapNodes(bst_t *root, bst_t *min);
+//void swapNodesn(bst_t *root, bst_t *min);
 
 bst_t *bst_remove(bst_t *root, int value)
 {
@@ -24,12 +24,16 @@ bst_t *bst_remove(bst_t *root, int value)
 		{
 			rm_node = root;
 			root = root->right;
+			root->parent = rm_node->parent;
+			root->parent->right = root;
 			free(rm_node);
 		}
 		else if (root->right == NULL)
 		{
 			rm_node = root;
 			root = root->left;
+			root->parent = rm_node->parent;
+			root->parent->right = root;
 			free(rm_node);
 		}
 		else
@@ -70,14 +74,57 @@ bst_t *bst_remove(bst_t *root, int value)
 			min->left = tmp;
 			if (tmp)
 				tmp->parent = min;*/
-			swapNodesn(root, min);
 			/*printf("%d\n", root->n);
 			printf("%d\n", root->parent->n);
 			printf("%d\n", root->parent->parent->n);
-			printf("%d\n", root->parent->parent->parent->n);
-			printf("-----------------------");*/
-			/*binary_tree_print(min);*/
-			bst_remove(min->parent, min->n);
+			//printf("%d\n", root->parent->parent->parent->n);
+			printf("%d\n", min->right->parent->n);
+			printf("-----------------------\n");
+			printf("%d\n", min->left->n);
+			printf("%d\n", min->left->parent->n);
+			printf("-----------------------\n");
+			printf("%p\n", (void *)min->parent);
+			printf("-----------------------\n");
+			printf("%d\n", min->right->left->n);
+			printf("%d\n", min->right->left->parent->n);
+			printf("%p\n", (void *)min->right->left->left);
+			printf("%p\n", (void *)min->right->left->right);
+			printf("-----------------------\n");
+			printf("-----------------------\n");
+			//printf("%d\n", min->left->parent->n);
+			binary_tree_print(min);
+			printf("-----------------------\n");
+			printf("-----------------------\n");
+			printf("%d\n", min->right->left->n);
+			printf("%p\n", (void *)min->right->left->left);
+			printf("%p\n", (void *)min->right->left->right);
+			printf("%d\n", min->right->left->parent->n);
+			printf("-----------------------\n");
+			printf("%d\n", min->n);
+			printf("%d\n", min->left->n);
+			printf("%d\n", min->right->n);
+			printf("%p\n", (void *)min->parent);
+			printf("-----------------------\n");
+			printf("%d\n", min->right->n);
+			printf("%d\n", min->right->left->n);
+			printf("%d\n", min->right->right->n);
+			printf("%d\n", min->right->parent->n);
+			printf("%p\n", (void *)min->right->parent);
+			printf("-----------------------\n");
+			printf("%d\n", min->left->n);
+			printf("%d\n", min->left->left->n);
+			printf("%d\n", min->left->right->n);
+			printf("%d\n", min->left->parent->n);
+			printf("%p\n", (void *)min->left->parent);
+			printf("-----------------------\n");
+			printf("%d\n", root->n);
+			printf("-----------------------\n");*/
+			swapNodes(root, min);
+			root->parent->left = NULL;
+			free(root);
+			root = min;
+
+			//return (bst_remove(min, root->n));
 		}
 	}
 	return (root);
@@ -95,41 +142,46 @@ bst_t *FindMin(bst_t *root)
 		root = root->left;
 	return root;
 }
-/*void swapNodes(bst_t *A, bst_t *B) {
-    if (A->parent != NULL) {
-        if (A->parent->left == A) {
-            A->parent->left = B;
-        } else {
-            A->parent->right = B;
-        }
-    }
 
-    if (B->parent != NULL) {
-        if (B->parent->left == B) {
-            B->parent->left = A;
-        } else {
-            B->parent->right = A;
-        }
-    }
-
-    // Swap the parent pointers
-    bst_t *tempParent = A->parent;
-    A->parent = B->parent;
-    B->parent = tempParent;
-
-    // Swap the left and right child pointers
-    bst_t *tempLeft = A->left;
-    A->left = B->left;
-    B->left = tempLeft;
-
-    bst_t *tempRight = A->right;
-    A->right = B->right;
-    B->right = tempRight;
-}*/
-void swapNodesn(bst_t *A, bst_t *B)
+void swapNodes(bst_t *root, bst_t *min)
 {
-    int temp = A->n;
+	bst_t *tempParent, *tempLeft, *tempRight;
 
-    A->n = B->n;
-    B->n = temp;
+	if (root->parent != NULL)
+	{
+		if (root->parent->left == root)
+			root->parent->left = min;
+		else
+			root->parent->right = min;
+        }
+	
+	if (min->parent != NULL)
+	{
+		if (min->parent->left == min)
+			min->parent->left = root;
+		else
+			min->parent->right = root;
+        }
+
+	tempParent = root->parent;
+	root->parent = min->parent;
+	min->parent = tempParent;
+
+	tempLeft = root->left;
+	root->left = min->left;
+	min->left = tempLeft;
+
+	tempRight = root->right;
+	root->right = min->right;
+	min->right = tempRight;
+
+	min->right->parent = min;
+	min->left->parent = min;
 }
+/*void swapNodesn(bst_t *root, bst_t *min)
+{
+    int temp = root->n;
+
+    root->n = min->n;
+    min->n = temp;
+}*/
