@@ -20,11 +20,35 @@ bst_t *bst_remove(bst_t *root, int value)
 			root = NULL;
 		}
 		else if (root->left == NULL)
+{
+    rm_node = root;
+    root = root->right;
+    if (rm_node->parent->left == rm_node)
+        rm_node->parent->left = root;
+    else
+        rm_node->parent->right = root;
+    if (root != NULL)
+        root->parent = rm_node->parent;
+    free(rm_node);
+}
+else if (root->right == NULL)
+{
+    rm_node = root;
+    root = root->left;
+    if (rm_node->parent->left == rm_node)
+        rm_node->parent->left = root;
+    else
+        rm_node->parent->right = root;
+    if (root != NULL)
+        root->parent = rm_node->parent;
+    free(rm_node);
+}
+		/*else if (root->left == NULL)
 		{
 			rm_node = root;
 			root = root->right;
 			root->parent = rm_node->parent;
-			root->parent->right = root;
+			root->parent->left = root;
 			free(rm_node);
 		}
 		else if (root->right == NULL)
@@ -34,7 +58,7 @@ bst_t *bst_remove(bst_t *root, int value)
 			root->parent = rm_node->parent;
 			root->parent->right = root;
 			free(rm_node);
-		}
+		}*/
 		else
 		{
 
