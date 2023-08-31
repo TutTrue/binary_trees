@@ -94,7 +94,7 @@ void binary_tree_to_array(const binary_tree_t *tree, size_t *tree_size,
 
 	binary_tree_to_array(tree->left, tree_size, tree_arr);
 	tree_arr[*tree_size] = tree->n;
-	*tree_size = *(tree_size)-1;
+	*tree_size = *(tree_size) - 1;
 
 	binary_tree_to_array(tree->right, tree_size, tree_arr);
 }
